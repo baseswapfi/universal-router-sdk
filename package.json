@@ -26,12 +26,6 @@
     "docs": "typedoc"
   },
   "author": "@Uniswap",
-  "prettier": {
-    "printWidth": 120,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
   "devDependencies": {
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.2.2",
@@ -50,10 +44,10 @@
   },
   "dependencies": {
     "@uniswap/permit2-sdk": "^1.2.0",
-    "@baseswapfi/router-sdk": "^1.6.0",
-    "@baseswapfi/sdk-core": "^4.0.0",
+    "@baseswapfi/router-sdk": "^1.0.0",
+    "@baseswapfi/sdk-core": "^1.0.6",
     "@uniswap/universal-router": "1.4.3",
-    "@baseswapfi/v2-sdk": "^3.2.0",
+    "@baseswapfi/v2-sdk": "^1,0.1",
     "bignumber.js": "^9.0.2",
     "ethers": "^5.3.1"
   },
