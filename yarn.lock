@@ -943,17 +943,18 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@baseswapfi/router-sdk@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.0.tgz#16619e4d08f9fbaa1930f2f541323267ec9edcfe"
-  integrity sha512-Bagh1h9ahCzQD7znFBMmhzvDMgEekbfETnd5hpFZKoeM59SsN84eL3zeiOO+1bqRplXUKpRHwHaCfNZB858ajQ==
+"@baseswapfi/router-sdk@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.2.tgz#a01ed5ea9946d484ea016f993b20009f4e0454d6"
+  integrity sha512-4cXPPr/k4BL1jPilGLnRKf6DyR/bdY9DmsDc8La6kybLIkdSfxsdYNGRNpcZWuKoPC6CbYe73YxinXx/khxsYQ==
   dependencies:
-    "@baseswapfi/sdk-core" "^1.0.5"
-    "@baseswapfi/v2-sdk" "^1.0.1"
+    "@baseswapfi/sdk-core" "^1.0.7"
+    "@baseswapfi/v2-sdk" "^1.0.3"
+    "@baseswapfi/v3-sdk2" "^3.10.0"
     "@uniswap/swap-router-contracts" "1.1.0"
     jsbi "^3.1.4"
 
-"@baseswapfi/sdk-core@^1.0.5", "@baseswapfi/sdk-core@^1.0.6":
+"@baseswapfi/sdk-core@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@baseswapfi/sdk-core/-/sdk-core-1.0.6.tgz#2cc0237a813c27b6e3623c5800bce55ecf89f646"
   integrity sha512-Wi9MaXUrkAAdbDym3cIlMkHO8t8SO0LVWC88CxLfw2xeQKnyZNtyDKLkwLlDe6mokUmyHZYacU5aFXc0EoaSgw==
@@ -975,16 +976,50 @@
     toformat "^2.0.0"
     typechain "^5.2.0"
 
-"@baseswapfi/v2-sdk@^1,0.1", "@baseswapfi/v2-sdk@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-1.0.1.tgz#ae97a30ecdb66c4404ac308c9863c069dcf2b55f"
-  integrity sha512-lrz0Zl4zUf3kkrQBXr2gjpStbojO9LBUqdKiYaMgs9vfRKfem1wGaX7TTwEjZdOGxnnVvNPKnIIhjTj8zxi08A==
+"@baseswapfi/sdk-core@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/sdk-core/-/sdk-core-1.0.7.tgz#a7c43b07c72f2eae0a94b5b411cc50bde6833810"
+  integrity sha512-SpIlhDoISNr3YzOTWzqjlhii0NJNrco8TlPQV1eysp+bPZbiLinenrjeAhMbuFSGaltG/s+Zvrl7kpI+Kq25RQ==
   dependencies:
-    "@baseswapfi/sdk-core" "^1.0.5"
+    "@ethersproject/abi" "^5.0.12"
+    "@ethersproject/address" "^5.0.2"
+    "@ethersproject/contracts" "^5"
+    "@ethersproject/providers" "5"
+    "@ethersproject/solidity" "^5.0.9"
+    "@reduxjs/toolkit" "1"
+    "@typechain/ethers-v5" "^7.2.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    ethers "^5.4.7"
+    jsbi "^3.1.4"
+    react ">=17"
+    react-redux ">=7"
+    tiny-invariant "^1.1.0"
+    toformat "^2.0.0"
+    typechain "^5.2.0"
+
+"@baseswapfi/v2-sdk@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-1.0.3.tgz#65b6e31400b9eb703efd22e47ad6520e08ff8f02"
+  integrity sha512-8029k5AA5+l9/re46hTL4u1IsYNiIgtgitDmuF5dSM3MkNF/H42RrWLFpY2kQK2yTazusrwPrM8hbig/YIop/Q==
+  dependencies:
+    "@baseswapfi/sdk-core" "^1.0.7"
     "@ethersproject/address" "^5.0.2"
     "@ethersproject/solidity" "^5.0.9"
     jsbi "^3.1.4"
     tiny-invariant "^1.1.0"
+
+"@baseswapfi/v3-sdk2@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v3-sdk2/-/v3-sdk2-3.10.0.tgz#9b228d7a7748ba40b92d1137505e7e0d9aa3b2fc"
+  integrity sha512-eqcZzIj+2XAe6qINlbvzSWT9CJI//hVBKJBAhU0MAu+YbQantDOaUNmRH5nwBtlRaPkoYud2r8sCK57Wf92qpw==
+  dependencies:
+    "@baseswapfi/sdk-core" "^1.0.6"
+    "@ethersproject/abi" "^5.0.12"
+    "@ethersproject/solidity" "^5.0.9"
+    jsbi "^3.1.4"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
@@ -8022,6 +8057,11 @@ tiny-invariant@^1.1.0, tiny-invariant@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.1.tgz#8560808c916ef02ecfd55e66090df23a4b7aa642"
   integrity sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==
+
+tiny-warning@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
+  integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
 tmp@0.0.33, tmp@^0.0.33:
   version "0.0.33"

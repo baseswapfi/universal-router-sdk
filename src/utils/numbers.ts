@@ -1,7 +1,8 @@
 import { BigNumber } from 'ethers'
 import JSBI from 'jsbi'
 import bn from 'bignumber.js'
-import { Percent, toHex } from '@baseswapfi/sdk-core'
+import { Percent } from '@baseswapfi/sdk-core'
+import { toHex } from '@baseswapfi/v3-sdk2'
 
 export function expandTo18DecimalsBN(n: number): BigNumber {
   // use bn intermediately to allow decimals in intermediate calculations
