@@ -943,10 +943,10 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@baseswapfi/router-sdk@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.2.tgz#a01ed5ea9946d484ea016f993b20009f4e0454d6"
-  integrity sha512-4cXPPr/k4BL1jPilGLnRKf6DyR/bdY9DmsDc8La6kybLIkdSfxsdYNGRNpcZWuKoPC6CbYe73YxinXx/khxsYQ==
+"@baseswapfi/router-sdk@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.3.tgz#67c6898eb49c81b82890242a566fbf15f4655de6"
+  integrity sha512-7jpmFLpahq5+B5Y0I54XioC0e/xUhNXI5aBwFbt3RWbmrpf8NdGv23Jq22mNoXfB7gTIDc1u6Z8B/7bVmQUiBg==
   dependencies:
     "@baseswapfi/sdk-core" "^1.0.7"
     "@baseswapfi/v2-sdk" "^1.0.3"
