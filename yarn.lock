@@ -936,14 +936,14 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@baseswapfi/router-sdk@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.5.tgz#4710d7d7198dce51600affef4b201b9ab663161a"
-  integrity sha512-zvAWsZelxZmTlJzqBHTov7nfncT0y2Y7kN+gDnsXX4tA0cVhxB6/qj55OU00+9hvRye1CsAsZUmlhQJKPoKf2g==
+"@baseswapfi/router-sdk@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.6.tgz#b7b7ddeac55fc51b7895cf1c266085bfc1631470"
+  integrity sha512-cpjDV+ASTlDXDr7AukJCjHH1fiO4G4jO/HmoKnFm2O88I8XNg4Kqe6WdkwbQ6B8YXPYLZB8e6K3cu1jYXHt3wA==
   dependencies:
     "@baseswapfi/sdk-core" "^1.0.11"
     "@baseswapfi/v2-sdk" "^1.0.5"
-    "@baseswapfi/v3-sdk2" "^3.10.2"
+    "@baseswapfi/v3-sdk2" "^3.10.3"
     "@uniswap/swap-router-contracts" "1.1.0"
     jsbi "^3.1.4"
 
@@ -976,10 +976,10 @@
     jsbi "^3.1.4"
     tiny-invariant "^1.1.0"
 
-"@baseswapfi/v3-sdk2@^3.10.2":
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/v3-sdk2/-/v3-sdk2-3.10.2.tgz#181e4f33b149a63eb3c4a72cc1dcf500855d1776"
-  integrity sha512-uoqkJv/EXLHx0MkkkcwOJZFXFp7UhNtrDPJIcXqJW29v+p24dqyFl78d5o8fI/4AHNYAHuVeFVCIPr2tDZ3v3g==
+"@baseswapfi/v3-sdk2@^3.10.3":
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v3-sdk2/-/v3-sdk2-3.10.3.tgz#042b3cca5c7a5777dc49854b28a31e3f1dec8883"
+  integrity sha512-XQ0PeGBix4c9W+7kh0MTQelWYDSnuvNFtD+BcYXE77D/azFywP1fBMSBvcv3rEU0vK5HG6Du/Qz1to1iukVLRg==
   dependencies:
     "@baseswapfi/sdk-core" "^1.0.11"
     "@ethersproject/abi" "^5.0.12"
