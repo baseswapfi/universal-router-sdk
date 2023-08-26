@@ -936,13 +936,13 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@baseswapfi/router-sdk@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.6.tgz#b7b7ddeac55fc51b7895cf1c266085bfc1631470"
-  integrity sha512-cpjDV+ASTlDXDr7AukJCjHH1fiO4G4jO/HmoKnFm2O88I8XNg4Kqe6WdkwbQ6B8YXPYLZB8e6K3cu1jYXHt3wA==
+"@baseswapfi/router-sdk@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.7.tgz#15c0295c79fb2d5e9ccaa1c458fb244e3c1f5c8b"
+  integrity sha512-abbGhBP270Oj5fRmu64JIHsSRo88ulEys2bTBZzFA+W8laHqNbsZIrS4eO8wsgHpZDDIX5zLsDNm/9MJzNULTg==
   dependencies:
     "@baseswapfi/sdk-core" "^1.0.11"
-    "@baseswapfi/v2-sdk" "^1.0.5"
+    "@baseswapfi/v2-sdk" "^1.0.6"
     "@baseswapfi/v3-sdk2" "^3.10.3"
     "@uniswap/swap-router-contracts" "1.1.0"
     jsbi "^3.1.4"
@@ -964,17 +964,6 @@
     tiny-invariant "^1.1.0"
     toformat "^2.0.0"
     typechain "^5.2.0"
-
-"@baseswapfi/v2-sdk@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-1.0.5.tgz#f3874893d01ba212fdd748afb0bf5cce1bfee4b2"
-  integrity sha512-TiwRXaZo/MrfMmfRxbKWRejBzTvWyJcFB2LC/e+Zou7yQYILqlWD5wjvfov0ro9Rd6aerrrrKMqDNrAUfIOZgA==
-  dependencies:
-    "@baseswapfi/sdk-core" "^1.0.11"
-    "@ethersproject/address" "^5.0.2"
-    "@ethersproject/solidity" "^5.0.9"
-    jsbi "^3.1.4"
-    tiny-invariant "^1.1.0"
 
 "@baseswapfi/v2-sdk@^1.0.6":
   version "1.0.6"
