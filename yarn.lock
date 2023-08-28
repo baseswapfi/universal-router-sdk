@@ -936,13 +936,13 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@baseswapfi/router-sdk@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.9.tgz#d7d190adc45e7f4a021511895258cde07120bdcf"
-  integrity sha512-S3f2bX2scl7mtlNOpF4s0hEL6Ee2j/XkQqCjvttTgxcTbmeGCbT7CGDdD49m25rI/hR6lrHILRpn2F1eqmDjWw==
+"@baseswapfi/router-sdk@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-1.0.10.tgz#622cff6bb345156c6118a2d7de26dbe6d1dfd079"
+  integrity sha512-TFfwItM6bAfqu2eCmeylHb4unlF/U9nZkxaIE4n4k8Y6WCjByiycaNHMR3x8F0L9oeimb/HqpTpBkuFutwsayQ==
   dependencies:
     "@baseswapfi/sdk-core" "^1.0.13"
-    "@baseswapfi/v2-sdk" "^1.0.7"
+    "@baseswapfi/v2-sdk" "^1.0.8"
     "@baseswapfi/v3-sdk2" "^3.10.6"
     "@uniswap/swap-router-contracts" "1.1.0"
     jsbi "^3.1.4"
@@ -983,12 +983,12 @@
     toformat "^2.0.0"
     typechain "^5.2.0"
 
-"@baseswapfi/v2-sdk@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-1.0.7.tgz#30723b436ff7efce510cfea7b59e476e675b2b17"
-  integrity sha512-MK623ognLFzOmecR7cyV4Ew5foGDc/1fb6J/zOx9QvujNZl7yj2ptGVenYb6OPrclFqzpRUC5RI8y7NdJk8dzg==
+"@baseswapfi/v2-sdk@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-1.0.8.tgz#fb6352e31c2442472045b5bee6323128e35a5962"
+  integrity sha512-WKDLtwF+HHF+DEvMx6PiJv/p2kWN0kUQBAB8Q4QlSJL9a3yTi9wpo8ZxF/7xjd0FNiIqWQN4iekE4rQ+BcinTA==
   dependencies:
-    "@baseswapfi/sdk-core" "^1.0.12"
+    "@baseswapfi/sdk-core" "^1.0.13"
     "@ethersproject/address" "^5.0.2"
     "@ethersproject/solidity" "^5.0.9"
     jsbi "^3.1.4"
