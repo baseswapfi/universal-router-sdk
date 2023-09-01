@@ -15,15 +15,8 @@ import {
   partitionMixedRouteByProtocol,
 } from '@baseswapfi/router-sdk'
 import { Permit2Permit } from '../../utils/inputTokens'
-import {
-  Currency,
-  TradeType,
-  CurrencyAmount,
-  Percent,
-  Trade as V3Trade,
-  Pool,
-  encodeRouteToPath,
-} from '@baseswapfi/sdk-core'
+import { Currency, TradeType, CurrencyAmount, Percent } from '@baseswapfi/sdk-core'
+import { Trade as V3Trade, Pool, encodeRouteToPath } from '@baseswapfi/v3-sdk2'
 import { Command, RouterTradeType, TradeConfig } from '../Command'
 import { SENDER_AS_RECIPIENT, ROUTER_AS_RECIPIENT, CONTRACT_BALANCE } from '../../utils/constants'
 import { encodeFeeBips } from '../../utils/numbers'
