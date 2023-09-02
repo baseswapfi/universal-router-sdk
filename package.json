@@ -1,6 +1,6 @@
 {
   "name": "@baseswapfi/universal-router-sdk",
-  "version": "1.5.22",
+  "version": "1.5.25",
   "description": "sdk for integrating with the Universal Router contracts",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -28,10 +28,10 @@
   },
   "author": "@Uniswap",
   "dependencies": {
-    "@baseswapfi/router-sdk": "^1.0.15",
-    "@baseswapfi/sdk-core": "^1.0.18",
-    "@baseswapfi/v2-sdk": "^1.0.12",
-    "@baseswapfi/v3-sdk2": "^3.10.11",
+    "@baseswapfi/router-sdk": "^1.0.18",
+    "@baseswapfi/sdk-core": "^1.0.21",
+    "@baseswapfi/v2-sdk": "^1.0.15",
+    "@baseswapfi/v3-sdk2": "^3.10.15",
     "@uniswap/permit2-sdk": "^1.2.0",
     "@uniswap/universal-router": "1.4.3",
     "bignumber.js": "^9.0.2",
