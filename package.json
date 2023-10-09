@@ -28,7 +28,7 @@
   },
   "author": "@Uniswap",
   "dependencies": {
-    "@baseswapfi/router-sdk": "^1.0.20",
+    "@baseswapfi/router-sdk": "^1.0.22",
     "@baseswapfi/sdk-core": "^1.0.26",
     "@baseswapfi/v2-sdk": "^1.0.16",
     "@baseswapfi/v3-sdk2": "^3.10.17",
