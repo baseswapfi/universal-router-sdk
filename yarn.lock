@@ -1024,6 +1024,18 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
+"@baseswapfi/v3-sdk2@^3.10.17":
+  version "3.10.17"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v3-sdk2/-/v3-sdk2-3.10.17.tgz#bc7eda6ca273738c25d9e409132d86b39d201787"
+  integrity sha512-o3qVSH6DaFWYm4vnvz1YF6ZcODUvXhPXkbwdGAPejp2/eUtCddwLjOOy8oJd5EPB1d45UXvHuywKIrDnU8jH7Q==
+  dependencies:
+    "@baseswapfi/sdk-core" "^1.0.26"
+    "@ethersproject/abi" "^5.0.12"
+    "@ethersproject/solidity" "^5.0.9"
+    jsbi "^3.1.4"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
