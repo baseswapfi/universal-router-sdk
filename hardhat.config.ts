@@ -5,10 +5,10 @@ export default {
   networks: {
     hardhat: {
       allowUnlimitedContractSize: false,
-      chainId: 1,
+      chainId: 8453,
       forking: {
         url: `${process.env.FORK_URL}`,
-        blockNumber: 15360000,
+        blockNumber: 2059124, // factory creation on Base
       },
     },
   },

@@ -12,11 +12,12 @@ import {
   FeeAmount,
 } from '@baseswapfi/v3-sdk2'
 import { SwapOptions } from '../../src'
-import { CurrencyAmount, TradeType, Ether, Token, Percent, Currency } from '@baseswapfi/sdk-core'
+import { CurrencyAmount, TradeType, Ether, Token, Percent, Currency, V2_FACTORY_ADDRESSES } from '@baseswapfi/sdk-core'
 import IUniswapV3Pool from '@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json'
 import { TEST_RECIPIENT_ADDRESS } from './addresses'
+import { CHAIN_ID, FORK_BLOCK } from './constants'
 
-const V2_FACTORY = '0x327Df1E6de05895d2ab08513aaDD9313Fe505d86'
+const V2_FACTORY = V2_FACTORY_ADDRESSES[CHAIN_ID]
 const V2_ABI = [
   {
     constant: true,
@@ -45,37 +46,35 @@ const V2_ABI = [
   },
 ]
 
-const FORK_BLOCK = 16075500
-
-export const ETHER = Ether.onChain(1)
-export const WETH = new Token(1, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether')
-export const DAI = new Token(1, '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb', 18, 'DAI', 'dai')
-export const USDC = new Token(1, '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA', 6, 'USDC', 'USD Coin') // USDbC
+export const ETHER = Ether.onChain(CHAIN_ID)
+export const WETH = new Token(CHAIN_ID, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether')
+export const DAI = new Token(CHAIN_ID, '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb', 18, 'DAI', 'dai')
+export const USDC = new Token(CHAIN_ID, '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA', 6, 'USDC', 'USD Coin') // USDbC
 export const FEE_AMOUNT = FeeAmount.MEDIUM
 
 type UniswapPools = {
   WETH_USDC_V2: Pair
-  USDC_DAI_V2: Pair
-  WETH_USDC_V3: Pool
-  WETH_USDC_V3_LOW_FEE: Pool
-  USDC_DAI_V3: Pool
+  // USDC_DAI_V2: Pair
+  // WETH_USDC_V3: Pool
+  // WETH_USDC_V3_LOW_FEE: Pool
+  // USDC_DAI_V3: Pool
 }
 
 export async function getUniswapPools(forkBlock?: number): Promise<UniswapPools> {
   const fork = forkBlock ?? FORK_BLOCK
   const WETH_USDC_V2 = await getPair(WETH, USDC, fork)
-  const USDC_DAI_V2 = await getPair(USDC, DAI, fork)
+  // const USDC_DAI_V2 = await getPair(USDC, DAI, fork)
 
-  const WETH_USDC_V3 = await getPool(WETH, USDC, FEE_AMOUNT, fork)
-  const WETH_USDC_V3_LOW_FEE = await getPool(WETH, USDC, FeeAmount.LOW, fork)
-  const USDC_DAI_V3 = await getPool(USDC, DAI, FeeAmount.LOW, fork)
+  // const WETH_USDC_V3 = await getPool(WETH, USDC, FEE_AMOUNT, fork)
+  // const WETH_USDC_V3_LOW_FEE = await getPool(WETH, USDC, FeeAmount.LOW, fork)
+  // const USDC_DAI_V3 = await getPool(USDC, DAI, FeeAmount.LOW, fork)
 
   return {
     WETH_USDC_V2,
-    USDC_DAI_V2,
-    WETH_USDC_V3,
-    WETH_USDC_V3_LOW_FEE,
-    USDC_DAI_V3,
+    // USDC_DAI_V2,
+    // WETH_USDC_V3,
+    // WETH_USDC_V3_LOW_FEE,
+    // USDC_DAI_V3,
   }
 }
 
@@ -88,7 +87,11 @@ export async function getPair(tokenA: Token, tokenB: Token, blockNumber: number)
   const contract = new ethers.Contract(pairAddress, V2_ABI, getProvider())
   const { reserve0, reserve1 } = await contract.getReserves({ blockTag: blockNumber })
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
-  return new Pair(CurrencyAmount.fromRawAmount(token0, reserve0), CurrencyAmount.fromRawAmount(token1, reserve1))
+  const pair = new Pair(CurrencyAmount.fromRawAmount(token0, reserve0), CurrencyAmount.fromRawAmount(token1, reserve1))
+
+  console.log(Pair.getAddress(token0, token1))
+
+  return pair
 }
 
 export async function getPool(tokenA: Token, tokenB: Token, feeAmount: FeeAmount, blockNumber: number): Promise<Pool> {
