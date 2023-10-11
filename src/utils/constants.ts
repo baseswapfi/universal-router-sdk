@@ -95,9 +95,9 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
   },
   // base mainnet
   [8453]: {
-    router: '0x33446f09E2a70C1C35718903c7c27f97989B33d9',
+    router: '0x73f4792E10076c1C26152DcF138D0BE252aB3338',
     weth: '0x4200000000000000000000000000000000000006',
-    creationBlock: 3700487,
+    creationBlock: 5118970,
   },
 }
 

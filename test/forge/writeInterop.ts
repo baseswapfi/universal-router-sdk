@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { hexToDecimalString } from '../utils/hexToDecimalString'
-import { MethodParameters } from '@uniswap/v3-sdk'
+import { MethodParameters } from '@baseswapfi/v3-sdk2'
 
 const INTEROP_FILE = './test/forge/interop.json'
 
