@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { abi } from '@uniswap/universal-router/artifacts/contracts/UniversalRouter.sol/UniversalRouter.json'
+import artifact from '@uniswap/universal-router/artifacts/contracts/UniversalRouter.sol/UniversalRouter.json'
 import { Interface } from '@ethersproject/abi'
 import { BigNumber, BigNumberish } from 'ethers'
 import { Trade as RouterTrade } from '@baseswapfi/router-sdk'
@@ -22,7 +22,7 @@ export type SwapRouterConfig = {
 type SupportedNFTTrade = NFTTrade<SupportedProtocolsData>
 
 export abstract class SwapRouter {
-  public static INTERFACE: Interface = new Interface(abi)
+  public static INTERFACE: Interface = new Interface(artifact.abi)
 
   public static swapCallParameters(trades: Command[] | Command, config: SwapRouterConfig = {}): MethodParameters {
     if (!Array.isArray(trades)) trades = [trades]

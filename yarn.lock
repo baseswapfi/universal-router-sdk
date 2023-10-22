@@ -936,21 +936,21 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@baseswapfi/router-sdk@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-2.0.0.tgz#625efebdafa79d75f1c7c38e777920538a0753bc"
-  integrity sha512-8HgsSD6Ck3Qjs7MgojRyxclUCCbYD7t4vglqwOKc56CdYbbEFx+r+zzrpLbP9EPm7tWiUlLkKiNIvkzWoP+xOg==
+"@baseswapfi/router-sdk@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/router-sdk/-/router-sdk-2.0.1.tgz#6eb1a783a30287b9b914859b573b89bb259ee69d"
+  integrity sha512-uAVsCFrvOhVEA3GPXkKI39ym/VAbgnCvmiPZhfEs0aYB8NawDFnB7t9otJooiPYwezeB0c+tpUsBjLKHphMfEA==
   dependencies:
-    "@baseswapfi/sdk-core" "^2.0.0"
-    "@baseswapfi/v2-sdk" "^2.0.0"
-    "@baseswapfi/v3-sdk2" "^4.0.0"
+    "@baseswapfi/sdk-core" "^2.0.5"
+    "@baseswapfi/v2-sdk" "^2.0.2"
+    "@baseswapfi/v3-sdk2" "^4.0.2"
     "@uniswap/swap-router-contracts" "1.1.0"
     jsbi "^3.1.4"
 
-"@baseswapfi/sdk-core@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/sdk-core/-/sdk-core-2.0.0.tgz#c0ea88716120232112dc552ce3b1bb668881a207"
-  integrity sha512-HO0tC5komOTK20pXEKBTnQmAX3H3pF7ShObHI6Et7jyvhMFH29/IXo6wbJwq2+VfpoIv4SeQRjCoSaDFsl1LYA==
+"@baseswapfi/sdk-core@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/sdk-core/-/sdk-core-2.0.5.tgz#ed2fca3a2e78cb852cfb4e6328ac481f78cb9b06"
+  integrity sha512-44tPo2KKT9D/ofMyn5+rOEoNh7MLmO9fBsgdRifxPAwG7bPLCaMGf2C0xys/o4SLsxgY0PzmBL4JTlSMHqsdTQ==
   dependencies:
     "@ethersproject/abi" "^5.0.12"
     "@ethersproject/address" "^5.0.2"
@@ -965,23 +965,23 @@
     toformat "^2.0.0"
     typechain "^5.2.0"
 
-"@baseswapfi/v2-sdk@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-2.0.0.tgz#d646f00d3c296387399bbace89bb126a8c3c8b68"
-  integrity sha512-fjzsX++7eAFsT04it1m+NYc4t6ejyDRTaSdouLhB8ggPbvI5uFIg7qSJ7uMPEy+V5/AckelRSKUsWrzohcvVow==
+"@baseswapfi/v2-sdk@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v2-sdk/-/v2-sdk-2.0.2.tgz#09a1272f6f5e2c601a6c8eb3dade410db38c9081"
+  integrity sha512-KhH8hA1cS2okqJMGmnuq0nPjXL7OBU10c/7Mvc4Hr/aUub4FXSkRLUU+Cp09j/1mPKTr6dTPCcJ3/LSHCc36Cg==
   dependencies:
-    "@baseswapfi/sdk-core" "^2.0.0"
+    "@baseswapfi/sdk-core" "^2.0.5"
     "@ethersproject/address" "^5.0.2"
     "@ethersproject/solidity" "^5.0.9"
     jsbi "^3.1.4"
     tiny-invariant "^1.1.0"
 
-"@baseswapfi/v3-sdk2@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@baseswapfi/v3-sdk2/-/v3-sdk2-4.0.0.tgz#b65088207397d0659da9ec7503b2db86b9796853"
-  integrity sha512-koe0NSDVP8C4R1SwVst5kzoEBtMMCfiJf3teToC1gwjlzy3Ag9oVbl/1gFTaDG0Qu4fWIcbZnZulhvjmuK1hTw==
+"@baseswapfi/v3-sdk2@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@baseswapfi/v3-sdk2/-/v3-sdk2-4.0.2.tgz#e25febf1346e0d634fa0837953f5988ea0c89d9c"
+  integrity sha512-y7F7RneCckC6uZnNnGjv7ZKXOE+1fxtgc+IIgSqMYh0ekspIb9Bww3gmT+EIbh7Qj7BHITIAWeDiikbVV6uoag==
   dependencies:
-    "@baseswapfi/sdk-core" "^2.0.0"
+    "@baseswapfi/sdk-core" "^2.0.5"
     "@ethersproject/abi" "^5.0.12"
     "@ethersproject/solidity" "^5.0.9"
     jsbi "^3.1.4"

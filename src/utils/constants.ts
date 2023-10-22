@@ -101,7 +101,7 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
   },
   // scroll mainnet
   [534352]: {
-    router: '0xc1e624C810D297FD70eF53B0E08F44FABE468591',
+    router: '0xA6Fae39901858a6dD51B5068C11348305a031cdF',
     weth: '0x5300000000000000000000000000000000000004',
     creationBlock: 167327,
   },
