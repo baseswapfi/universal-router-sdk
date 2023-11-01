@@ -20,12 +20,18 @@ import { Trade as V3Trade, Pool, encodeRouteToPath } from '@baseswapfi/v3-sdk2'
 import { Command, RouterTradeType, TradeConfig } from '../Command'
 import { SENDER_AS_RECIPIENT, ROUTER_AS_RECIPIENT, CONTRACT_BALANCE } from '../../utils/constants'
 import { encodeFeeBips } from '../../utils/numbers'
-import { BigNumber } from 'ethers'
+import { BigNumber, BigNumberish } from 'ethers'
+
+export declare type FlatFeeOptions = {
+  amount: BigNumberish
+  recipient: string
+}
 
 // the existing router permit object doesn't include enough data for permit2
 // so we extend swap options with the permit2 permit
-export type SwapOptions = Omit<RouterSwapOptions, 'inputTokenPermit'> & {
+export declare type SwapOptions = Omit<RouterSwapOptions, 'inputTokenPermit'> & {
   inputTokenPermit?: Permit2Permit
+  flatFee?: FlatFeeOptions
 }
 
 const REFUND_ETH_PRICE_IMPACT_THRESHOLD = new Percent(50, 100)
