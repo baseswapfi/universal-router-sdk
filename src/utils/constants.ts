@@ -89,9 +89,9 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
   },
   // base goerli
   [84531]: {
-    router: '0x53b55fA6f1750EA87AACC5b9fde42C2709b25291',
+    router: '0xD3b9f4fe491Ac92AD75B214cfdCb16dc412154E2',
     weth: '0x4200000000000000000000000000000000000006',
-    creationBlock: 10835565,
+    creationBlock: 12172910,
   },
   // base mainnet
   [8453]: {
