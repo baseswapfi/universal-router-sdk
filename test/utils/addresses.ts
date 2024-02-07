@@ -1,5 +1,6 @@
-import { UNIVERSAL_ROUTER_ADDRESS, PERMIT2_ADDRESS as MAINNET_PERMIT2_ADDRESS } from '../../src/utils/constants'
+import { UNIVERSAL_ROUTER_ADDRESS } from '../../src/utils/constants'
 import { CHAIN_ID } from './constants'
+import { PERMIT2_ADDRESSES } from '@baseswapfi/permit2-sdk'
 
 export const MAINNET_ROUTER_ADDRESS = UNIVERSAL_ROUTER_ADDRESS(CHAIN_ID)
 export const FORGE_ROUTER_ADDRESS = '0xe808c1cfeebb6cb36b537b82fa7c9eef31415a05'
@@ -11,7 +12,7 @@ export const TEST_RECIPIENT_ADDRESS = '0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 export const TEST_FEE_RECIPIENT_ADDRESS = '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
 
 export const PERMIT2_ADDRESS =
-  process.env.USE_MAINNET_DEPLOYMENT === 'true' ? MAINNET_PERMIT2_ADDRESS : FORGE_PERMIT2_ADDRESS
+  process.env.USE_MAINNET_DEPLOYMENT === 'true' ? PERMIT2_ADDRESSES[CHAIN_ID] : FORGE_PERMIT2_ADDRESS
 // Universal Router address in tests
 export const ROUTER_ADDRESS =
   process.env.USE_MAINNET_DEPLOYMENT === 'true' ? MAINNET_ROUTER_ADDRESS : FORGE_ROUTER_ADDRESS
