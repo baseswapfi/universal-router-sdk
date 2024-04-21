@@ -30,7 +30,7 @@
   "dependencies": {
     "@baseswapfi/router-sdk": "^1.1.1",
     "@baseswapfi/sdk-core": "^1.2.1",
-    "@baseswapfi/v2-sdk": "^1.0.20",
+    "@baseswapfi/v2-sdk": "^1.1.0",
     "@baseswapfi/v3-sdk2": "^3.11.0",
     "@baseswapfi/permit2-sdk": "^1.3.2",
     "@uniswap/universal-router": "1.4.3",
