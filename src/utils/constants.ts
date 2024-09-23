@@ -41,9 +41,9 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
   },
   //optimism
   [10]: {
-    router: '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD',
+    router: '0x8A1C25a8414834b59Bc0bfEBB25fd98F18Db314e',
     weth: '0x4200000000000000000000000000000000000006',
-    creationBlock: 96333990,
+    creationBlock: 125766022,
   },
   // optimism goerli
   [420]: {
