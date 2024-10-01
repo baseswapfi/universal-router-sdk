@@ -18,14 +18,24 @@ import { Permit2Permit } from '../../utils/inputTokens'
 import { Currency, TradeType, CurrencyAmount, Percent } from '@baseswapfi/sdk-core'
 import { Trade as V3Trade, Pool, encodeRouteToPath } from '@baseswapfi/v3-sdk2'
 import { Command, RouterTradeType, TradeConfig } from '../Command'
-import { SENDER_AS_RECIPIENT, ROUTER_AS_RECIPIENT, CONTRACT_BALANCE } from '../../utils/constants'
+import { SENDER_AS_RECIPIENT, ROUTER_AS_RECIPIENT, CONTRACT_BALANCE, ETH_ADDRESS } from '../../utils/constants'
 import { encodeFeeBips } from '../../utils/numbers'
-import { BigNumber } from 'ethers'
+import { BigNumber, BigNumberish } from 'ethers'
+
+export type FlatFeeOptions = {
+  amount: BigNumberish
+  recipient: string
+}
 
 // the existing router permit object doesn't include enough data for permit2
 // so we extend swap options with the permit2 permit
+// when safe mode is enabled, the SDK will add an extra ETH sweep for security
+// when useRouterBalance is enabled the SDK will use the balance in the router for the swap
 export type SwapOptions = Omit<RouterSwapOptions, 'inputTokenPermit'> & {
+  useRouterBalance?: boolean
   inputTokenPermit?: Permit2Permit
+  flatFee?: FlatFeeOptions
+  safeMode?: boolean
 }
 
 const REFUND_ETH_PRICE_IMPACT_THRESHOLD = new Percent(50, 100)
@@ -40,20 +50,48 @@ interface Swap<TInput extends Currency, TOutput extends Currency> {
 // also translates trade objects from previous (v2, v3) SDKs
 export class UniswapTrade implements Command {
   readonly tradeType: RouterTradeType = RouterTradeType.UniswapTrade
-  constructor(public trade: RouterTrade<Currency, Currency, TradeType>, public options: SwapOptions) {}
+  readonly payerIsUser: boolean
+
+  constructor(public trade: RouterTrade<Currency, Currency, TradeType>, public options: SwapOptions) {
+    if (!!options.fee && !!options.flatFee) throw new Error('Only one fee option permitted')
+    if (this.inputRequiresWrap) this.payerIsUser = false
+    else if (this.options.useRouterBalance) this.payerIsUser = false
+    else this.payerIsUser = true
+  }
+
+  get inputRequiresWrap(): boolean {
+    // if (!this.isAllV4) {
+    //   return this.trade.inputAmount.currency.isNative
+    // } else {
+    //   // We only support wrapping all ETH or no ETH currently. We cannot support splitting where half needs to be wrapped
+    //   // If the input currency is ETH and the input of the first path is not ETH it must be WETH that needs wrapping
+    //   return this.trade.inputAmount.currency.isNative && !this.trade.swaps[0].route.input.isNative
+    // }
+    // We only support wrapping all ETH or no ETH currently. We cannot support splitting where half needs to be wrapped
+    // If the input currency is ETH and the input of the first path is not ETH it must be WETH that needs wrapping
+    return this.trade.inputAmount.currency.isNative && !this.trade.swaps[0].route.input.isNative
+  }
+
+  get outputRequiresUnwrap(): boolean {
+    // if (!this.isAllV4) {
+    //   return this.trade.outputAmount.currency.isNative
+    // } else {
+    //   // If the output currency is ETH and the output of the swap is not ETH it must be WETH that needs unwrapping
+    //   return this.trade.outputAmount.currency.isNative && !this.trade.swaps[0].route.output.isNative
+    // }
+
+    // If the output currency is ETH and the output of the swap is not ETH it must be WETH that needs unwrapping
+    return this.trade.outputAmount.currency.isNative && !this.trade.swaps[0].route.output.isNative
+  }
 
   encode(planner: RoutePlanner, _config: TradeConfig): void {
-    let payerIsUser = true
-
     // If the input currency is the native currency, we need to wrap it with the router as the recipient
-    if (this.trade.inputAmount.currency.isNative) {
+    if (this.inputRequiresWrap) {
       // TODO: optimize if only one v2 pool we can directly send this to the pool
       planner.addCommand(CommandType.WRAP_ETH, [
         ROUTER_AS_RECIPIENT,
         this.trade.maximumAmountIn(this.options.slippageTolerance).quotient.toString(),
       ])
-      // since WETH is now owned by the router, the router pays for inputs
-      payerIsUser = false
     }
     // The overall recipient at the end of the trade, SENDER_AS_RECIPIENT uses the msg.sender
     this.options.recipient = this.options.recipient ?? SENDER_AS_RECIPIENT
@@ -64,20 +102,18 @@ export class UniswapTrade implements Command {
     //      in that the reversion probability is lower
     const performAggregatedSlippageCheck =
       this.trade.tradeType === TradeType.EXACT_INPUT && this.trade.routes.length > 2
-    const outputIsNative = this.trade.outputAmount.currency.isNative
-    const inputIsNative = this.trade.inputAmount.currency.isNative
-    const routerMustCustody = performAggregatedSlippageCheck || outputIsNative || !!this.options.fee
+    const routerMustCustody = performAggregatedSlippageCheck || this.outputRequiresUnwrap || hasFeeOption(this.options)
 
     for (const swap of this.trade.swaps) {
       switch (swap.route.protocol) {
         case Protocol.V2:
-          addV2Swap(planner, swap, this.trade.tradeType, this.options, payerIsUser, routerMustCustody)
+          addV2Swap(planner, swap, this.trade.tradeType, this.options, this.payerIsUser, routerMustCustody)
           break
         case Protocol.V3:
-          addV3Swap(planner, swap, this.trade.tradeType, this.options, payerIsUser, routerMustCustody)
+          addV3Swap(planner, swap, this.trade.tradeType, this.options, this.payerIsUser, routerMustCustody)
           break
         case Protocol.MIXED:
-          addMixedSwap(planner, swap, this.trade.tradeType, this.options, payerIsUser, routerMustCustody)
+          addMixedSwap(planner, swap, this.trade.tradeType, this.options, this.payerIsUser, routerMustCustody)
           break
         default:
           throw new Error('UNSUPPORTED_TRADE_PROTOCOL')
@@ -107,9 +143,28 @@ export class UniswapTrade implements Command {
         }
       }
 
+      // If there is a flat fee, that absolute amount is sent to the fee recipient
+      // In the case where ETH is the output currency, the fee is taken in WETH (for gas reasons)
+      if (!!this.options.flatFee) {
+        const feeAmount = this.options.flatFee.amount
+        if (minimumAmountOut.lt(feeAmount)) throw new Error('Flat fee amount greater than minimumAmountOut')
+
+        planner.addCommand(CommandType.TRANSFER, [
+          this.trade.outputAmount.currency.wrapped.address,
+          this.options.flatFee.recipient,
+          feeAmount,
+        ])
+
+        // If the trade is exact output, and a fee was taken, we must adjust the amount out to be the amount after the fee
+        // Otherwise we continue as expected with the trade's normal expected output
+        if (this.trade.tradeType === TradeType.EXACT_OUTPUT) {
+          minimumAmountOut = minimumAmountOut.sub(feeAmount)
+        }
+      }
+
       // The remaining tokens that need to be sent to the user after the fee is taken will be caught
       // by this if-else clause.
-      if (outputIsNative) {
+      if (this.outputRequiresUnwrap) {
         planner.addCommand(CommandType.UNWRAP_WETH, [this.options.recipient, minimumAmountOut])
       } else {
         planner.addCommand(CommandType.SWEEP, [
@@ -120,11 +175,13 @@ export class UniswapTrade implements Command {
       }
     }
 
-    if (inputIsNative && (this.trade.tradeType === TradeType.EXACT_OUTPUT || riskOfPartialFill(this.trade))) {
+    if (this.inputRequiresWrap && (this.trade.tradeType === TradeType.EXACT_OUTPUT || riskOfPartialFill(this.trade))) {
       // for exactOutput swaps that take native currency as input
       // we need to send back the change to the user
       planner.addCommand(CommandType.UNWRAP_WETH, [this.options.recipient, 0])
     }
+
+    if (this.options.safeMode) planner.addCommand(CommandType.SWEEP, [ETH_ADDRESS, this.options.recipient, 0])
   }
 }
 
@@ -288,4 +345,8 @@ function addMixedSwap<TInput extends Currency, TOutput extends Currency>(
 // if price impact is very high, there's a chance of hitting max/min prices resulting in a partial fill of the swap
 function riskOfPartialFill(trade: RouterTrade<Currency, Currency, TradeType>): boolean {
   return trade.priceImpact.greaterThan(REFUND_ETH_PRICE_IMPACT_THRESHOLD)
+}
+
+function hasFeeOption(swapOptions: SwapOptions): boolean {
+  return !!swapOptions.fee || !!swapOptions.flatFee
 }
