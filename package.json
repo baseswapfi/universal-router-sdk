@@ -1,6 +1,6 @@
 {
   "name": "@baseswapfi/universal-router-sdk",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "description": "SDK for integrating with the Universal Router contracts",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

@@ -111,6 +111,12 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
     weth: '0x4200000000000000000000000000000000000006',
     creationBlock: 2738787,
   },
+  // sonic testnet
+  [64165]: {
+    router: '0xbF79915e80DE0A361A4F35175BA9bF2e91B10424',
+    weth: '0x591E027153ED4e536275984e1b7573367e11dac4',
+    creationBlock: 78546348,
+  },
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {
