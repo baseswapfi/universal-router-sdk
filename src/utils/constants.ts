@@ -105,12 +105,12 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
     weth: '0x4200000000000000000000000000000000000006',
     creationBlock: 3589443,
   },
-  // mode testnet
-  // [919]: {
-  //   router: '',
-  //   weth: '0xeb72756ee12309Eae82a0deb9787e69f5b62949c',
-  //   creationBlock: 0,
-  // },
+  // soneium testnet
+  [1946]: {
+    router: '0xfb926356BAf861c93C3557D7327Dbe8734A71891',
+    weth: '0x4200000000000000000000000000000000000006',
+    creationBlock: 2738787,
+  },
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {
