@@ -139,6 +139,7 @@ export const WETH_ADDRESS = (chainId: number): string => {
 
 export const CONTRACT_BALANCE = BigNumber.from(2).pow(255)
 export const ETH_ADDRESS = '0x0000000000000000000000000000000000000000'
+export const E_ETH_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 export const MAX_UINT256 = BigNumber.from(2).pow(256).sub(1)
 export const MAX_UINT160 = BigNumber.from(2).pow(160).sub(1)
